@@ -11,6 +11,9 @@ import ElectricRouter from "./app/modules/service/electric_electronics/electric.
 import AdRoute from "./app/modules/service/advertising/advertising.route";
 import officeRoute from "./app/modules/service/OfficeStationery/office.route";
 import TravelRoute from "./app/modules/service/Travel/travel.route";
+import CarRoute from "./app/modules/service/CarRent/car.route";
+import NotaryRoute from "./app/modules/service/NotaryPublic/Notary.route";
+import ConsultancyRoute from "./app/modules/service/Consultancy/consultancy.route";
 
 const app:Application = express()
 
@@ -29,8 +32,9 @@ app.use('/api/electric-electronics',ElectricRouter)
 app.use('/api/advertising',AdRoute)
 app.use('/api/office-stationery',officeRoute)
 app.use('/api/tour-travel',TravelRoute)
-
-
+app.use('/api/car-rent',CarRoute)
+app.use('/api/notary-public',NotaryRoute)
+app.use('/api/consultancy',ConsultancyRoute)
 
 
 

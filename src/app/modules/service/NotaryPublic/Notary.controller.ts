@@ -1,16 +1,16 @@
 import { NextFunction, Request,Response } from "express";
-import CarService from "./Car.service";
+import NotaryService from "./Notary.service";
 
 import ApiResponse from "../../../utils/ApiResponse";
 import { IAdd } from "../advertising/advertising.interface";
 
 
-class CarController {
+class NotaryController {
     // Create Event
     async create(req: Request, res: Response, next: NextFunction) {
       try {
         const webData: IAdd = req.body;
-        const event = await CarService.create(webData);
+        const event = await NotaryService.create(webData);
         ApiResponse.success(res, event, 201, 'new service created successfully');
       } catch (error) {
         next(error);
@@ -20,7 +20,7 @@ class CarController {
     // Get All Events
     async getAll(req: Request, res: Response, next: NextFunction) {
       try {
-        const event = await CarService.findAll();
+        const event = await NotaryService.findAll();
         ApiResponse.success(res,event, 200, ' services fetched successfully');
       } catch (error) {
         next(error);
@@ -30,7 +30,7 @@ class CarController {
     // Get Single Event
     async getById(req: Request, res: Response, next: NextFunction) {
       try {
-        const event = await CarService.findById(req.params.id);
+        const event = await NotaryService.findById(req.params.id);
         if (!event) {
           return ApiResponse.notFound(res, ' service not found');
         }
@@ -44,7 +44,7 @@ class CarController {
     async update(req: Request, res: Response, next: NextFunction) {
       try {
         
-        const event = await CarService.update(req.params.id, req.body);
+        const event = await NotaryService.update(req.params.id, req.body);
         if (!event) {
           return ApiResponse.notFound(res, ' service not found');
         }
@@ -57,7 +57,7 @@ class CarController {
     // Delete Event
     async delete(req: Request, res: Response, next: NextFunction) {
       try {
-        const event = await CarService.delete(req.params.id);
+        const event = await NotaryService.delete(req.params.id);
         if (!event) {
           return ApiResponse.notFound(res, 'service not found');
         }
@@ -67,4 +67,4 @@ class CarController {
       }
     }
   }
-  export default new CarController
+  export default new NotaryController
