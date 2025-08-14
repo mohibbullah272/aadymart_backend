@@ -10,6 +10,7 @@ import ArchRouter from "./app/modules/service/architechturalDesign/ArchRoute";
 import ElectricRouter from "./app/modules/service/electric_electronics/electric.route";
 import AdRoute from "./app/modules/service/advertising/advertising.route";
 import officeRoute from "./app/modules/service/OfficeStationery/office.route";
+import TravelRoute from "./app/modules/service/Travel/travel.route";
 
 const app:Application = express()
 
@@ -27,7 +28,7 @@ app.use('/api/architectural-design',ArchRouter)
 app.use('/api/electric-electronics',ElectricRouter)
 app.use('/api/advertising',AdRoute)
 app.use('/api/office-stationery',officeRoute)
-
+app.use('/api/tour-travel',TravelRoute)
 
 
 
