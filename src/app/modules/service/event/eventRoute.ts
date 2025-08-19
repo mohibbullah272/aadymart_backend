@@ -1,13 +1,14 @@
 import { Router } from 'express';
 import EventController from './event.controller';
+import CheckAdmin from '../../../middlewares/CheckAdmin';
 
 
 const EventRouter = Router();
 
-EventRouter.post('/',  EventController.create);
+EventRouter.post('/', CheckAdmin, EventController.create);
 EventRouter.get('/', EventController.getAll);
 EventRouter.get('/:id', EventController.getById);
-EventRouter.put('/:id',  EventController.update);
-EventRouter.delete('/:id', EventController.delete);
+EventRouter.put('/:id', CheckAdmin, EventController.update);
+EventRouter.delete('/:id',CheckAdmin, EventController.delete);
 
 export default EventRouter;

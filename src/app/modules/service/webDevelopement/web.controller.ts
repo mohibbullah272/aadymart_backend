@@ -18,7 +18,9 @@ class WebController {
   
     // Get All Events
     async getAll(req: Request, res: Response, next: NextFunction) {
+    
       try {
+      
         const event = await webService.findAll();
         ApiResponse.success(res,event, 200, 'web services fetched successfully');
       } catch (error) {
