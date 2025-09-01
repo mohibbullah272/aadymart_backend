@@ -2,7 +2,6 @@ import { Application, Request, Response } from "express";
 import express from 'express';
 import cors from 'cors'
 import globalErrorHandler from "./app/middlewares/error";
-
 import { UserRoute } from "./app/modules/auth/auth.route";
 import EventRouter from "./app/modules/service/event/eventRoute";
 import WebRouter from "./app/modules/service/webDevelopement/web.route";
@@ -14,6 +13,8 @@ import TravelRoute from "./app/modules/service/Travel/travel.route";
 import CarRoute from "./app/modules/service/CarRent/car.route";
 import NotaryRoute from "./app/modules/service/NotaryPublic/Notary.route";
 import ConsultancyRoute from "./app/modules/service/Consultancy/consultancy.route";
+import nodeMailer from 'nodemailer';
+
 
 
 const app:Application = express()
@@ -37,8 +38,48 @@ app.use('/api/notary-public',NotaryRoute)
 app.use('/api/consultancy',ConsultancyRoute)
 app.use('/api/user',UserRoute) 
 
-
-app.get("/healthz", (req, res) => {
+interface IMail {
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+  }
+  
+  // Nodemailer transporter (Gmail)
+  const transporter = nodeMailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: 'bullahmohi50@gmail.com',
+      pass: 'xvdq aovg sopz zapw',
+    },
+  });
+  
+  app.post("/api/send", async (req: Request, res: Response) => {
+    const { name, email, subject, message } = req.body;
+  
+    const mailInfo: IMail = {
+      name,
+      email,
+      subject,
+      message,
+    };
+  
+    try {
+      const result = await transporter.sendMail({
+        from: email, // Gmail account
+        to: "bullahmohi50@gmail.com", // receiver
+        subject: mailInfo.subject,
+        text: `From: ${mailInfo.email}\n\n${mailInfo.message}`,
+      });
+  
+      console.log(result);
+      res.json({ success: true, result });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ success: false, error });
+    }
+  });
+app.get("/healthz", (req:Request,res:Response) => {
     res.send("ok");
   });
   
