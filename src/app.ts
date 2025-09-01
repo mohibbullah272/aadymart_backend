@@ -49,7 +49,7 @@ interface IMail {
   const transporter = nodeMailer.createTransport({
     service: "gmail",
     auth: {
-      user: 'bullahmohi50@gmail.com',
+      user: 'aadymart@gmail.com',
       pass: 'xvdq aovg sopz zapw',
     },
   });
@@ -67,7 +67,7 @@ interface IMail {
     try {
       const result = await transporter.sendMail({
         from: email, // Gmail account
-        to: "bullahmohi50@gmail.com", // receiver
+        to: "aadymart@gmail.com", // receiver
         subject: mailInfo.subject,
         text: `From: ${mailInfo.email}\n\n${mailInfo.message}`,
       });
