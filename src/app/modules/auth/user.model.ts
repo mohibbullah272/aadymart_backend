@@ -8,7 +8,7 @@ interface IUser{
 }
 const UserSchema = new Schema<IUser>({
     displayName :{type:String},
-    email:{type:String,required:true},
+    email:{type:String,required:true,unique:true},
     role:{
         type:String,
         default:"User"

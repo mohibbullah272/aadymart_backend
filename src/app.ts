@@ -14,6 +14,8 @@ import CarRoute from "./app/modules/service/CarRent/car.route";
 import NotaryRoute from "./app/modules/service/NotaryPublic/Notary.route";
 import ConsultancyRoute from "./app/modules/service/Consultancy/consultancy.route";
 import nodeMailer from 'nodemailer';
+import ITRoute from "./app/modules/service/IT/IT.route";
+import BlogRoute from "./app/modules/blog/blog.route";
 
 
 
@@ -37,6 +39,15 @@ app.use('/api/car-rent',CarRoute)
 app.use('/api/notary-public',NotaryRoute)
 app.use('/api/consultancy',ConsultancyRoute)
 app.use('/api/user',UserRoute) 
+app.use('/api/IT',ITRoute)
+app.use("/api/blogs",BlogRoute)
+
+
+
+
+
+
+
 
 interface IMail {
     name: string;
@@ -50,7 +61,7 @@ interface IMail {
     service: "gmail",
     auth: {
       user: 'aadymart@gmail.com',
-      pass: 'xvdq aovg sopz zapw',
+      pass: 'getc rbwk flou mkby',
     },
   });
   
