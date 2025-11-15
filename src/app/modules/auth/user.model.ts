@@ -1,24 +1,23 @@
 import { model, Schema } from "mongoose";
 
-
-interface IUser{
-    displayName?:string | null;
-    email:string,
-    role?:string
+interface IUser {
+    displayName?: string | null;
+    email: string;
+    role?: string;
 }
+
 const UserSchema = new Schema<IUser>({
-    displayName :{type:String},
-    email:{type:String,required:true,unique:true},
-    role:{
-        type:String,
-        default:"User"
+    displayName: { type: String },
+    email: { type: String, required: true, unique: true },
+    role: {
+        type: String,
+        default: "User",
+        enum: ["User", "Admin"] // Add enum for valid roles
     }
-},
-{
-    collection:'user',
-    versionKey:false
-})
+}, {
+    collection: 'user',
+    versionKey: false
+});
 
-const User =  model<IUser>("User",UserSchema)
-
-export default User
+const User = model<IUser>("User", UserSchema);
+export default User;
