@@ -16,6 +16,7 @@ import ConsultancyRoute from "./app/modules/service/Consultancy/consultancy.rout
 import nodeMailer from 'nodemailer';
 import ITRoute from "./app/modules/service/IT/IT.route";
 import BlogRoute from "./app/modules/blog/blog.route";
+import hotelRoute from "./app/modules/service/hotel/hotel.route";
 
 
 
@@ -23,7 +24,7 @@ const app:Application = express()
 
 app.use(cors(
     {
-        origin:["https://www.aadymart.xyz","http://localhost:5173"],
+        origin:["https://www.aadymart.xyz","http://localhost:5173","https://www.aadygroup.com"],
         credentials:true
     }
 ))
@@ -41,7 +42,7 @@ app.use('/api/consultancy',ConsultancyRoute)
 app.use('/api/user',UserRoute) 
 app.use('/api/IT',ITRoute)
 app.use("/api/blogs",BlogRoute)
-
+app.use("/api/hotel_resort",hotelRoute)
 
 
 
