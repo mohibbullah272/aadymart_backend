@@ -24,7 +24,7 @@ const app:Application = express()
 
 app.use(cors(
     {
-        origin:["https://www.aadymart.xyz","http://localhost:5173","https://www.aadygroup.com"],
+        origin:["https://www.aadymart.xyz","http://localhost:5173","https://www.aadygroup.com","http://localhost:3000"],
         credentials:true
     }
 ))
